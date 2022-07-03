@@ -11,6 +11,7 @@ public class EnemyWeapon : MonoBehaviour
     [SerializeField] private float shootForce;
     [SerializeField] private float shootDelay;
     [SerializeField] private float shootingRadius;
+    public bool shoot { get; private set; } = false;
     private Transform target;
     private Bullet bulletPrefab;
     private Vector2 weaponDir;
@@ -39,6 +40,8 @@ public class EnemyWeapon : MonoBehaviour
         if (!hasShot && targetDist < Mathf.Pow(shootingRadius, 2))
         {
             hasShot = true;
+            shoot = true;
+            StartCoroutine(ResetShoot());
             StartCoroutine(CannonShoot());
         }
     }
@@ -60,5 +63,16 @@ public class EnemyWeapon : MonoBehaviour
         bulletPrefab.SetScale(bulletScale);
         bulletPrefab.Shoot(weaponDir.normalized, shootForce);
         hasShot = false;
+    }
+
+    private IEnumerator ResetShoot()
+    {
+        yield return new WaitForSecondsRealtime(.001f);
+        shoot = false;
+    }
+
+    public Transform GetShootPos()
+    {
+        return shootPos;
     }
 }

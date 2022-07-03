@@ -163,6 +163,7 @@ MonoBehaviour:
   shootForce: 40
   shootDelay: 1.5
   shootingRadius: 8
+  shootEffectDelay: 0.1
 --- !u!1 &7697153266475681300
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7697153266475681300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.43, y: 0, z: 0}
+  m_LocalPosition: {x: 0.74, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -242,6 +243,7 @@ GameObject:
   - component: {fileID: 7697153267111409365}
   - component: {fileID: 7697153267111409364}
   - component: {fileID: 7697153267111409361}
+  - component: {fileID: -3572525927288107113}
   m_Layer: 6
   m_Name: Piggy
   m_TagString: Piggy
@@ -425,3 +427,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-3572525927288107113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7697153267111409353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7b6f7ff01564412a1f335351ac60b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 7697153265812786115}
+  shotTexture: {fileID: 4827204440330316491, guid: 304c026a7331a443d9fa9685fbba9b52, type: 3}

@@ -10,8 +10,11 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Ammo ammo;
     [SerializeField] private DisplayValue displayCurrentAmmo;
     [SerializeField] private int maxAmmo;
+    [SerializeField] private float shootDelay;
     public int currentAmmo { get; private set; }
     public bool hasShot { get; private set; } = false;
+    public bool canShoot { get; private set; } = true;
+    public bool hasTriggered { get; private set; } = false;
     private Bullet bulletPrefab;
 
     private void Start()
@@ -23,12 +26,18 @@ public class Weapon : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.F))
         {
-            if (currentAmmo > 0)
+            hasTriggered = true;
+            canShoot = false;
+
+            if (currentAmmo > 0 && canShoot)
             {
                 WeaponShoot();
+                hasShot = true;
+                StartCoroutine(ResetShot());
+                StartCoroutine(CanShoot());
             }
-            hasShot = true;
-            StartCoroutine(ResetShot());
+
+            StartCoroutine(ResetTrigger());
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -50,6 +59,18 @@ public class Weapon : MonoBehaviour
         hasShot = false;
     }
 
+    IEnumerator CanShoot()
+    {
+        yield return new WaitForSecondsRealtime(shootDelay);
+        canShoot = true;
+    }
+
+    IEnumerator ResetTrigger()
+    {
+        yield return new WaitForSecondsRealtime(.001f);
+        hasTriggered = false;
+    }
+
     private void Reload()
     {
         if (ammo.value == 0 || currentAmmo == maxAmmo)
@@ -68,5 +89,10 @@ public class Weapon : MonoBehaviour
             currentAmmo++;
             ammo.SetAmmo(ammo.value - 1);
         }
+    }
+
+    public Transform GetShootPos()
+    {
+        return shootPos;
     }
 }
