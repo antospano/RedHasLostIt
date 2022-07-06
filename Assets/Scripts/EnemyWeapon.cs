@@ -18,6 +18,9 @@ public class EnemyWeapon : MonoBehaviour
     private float angle;
     private float targetDist;
     private bool hasShot = false;
+    private IEnumerator shootCoroutine;
+    private bool pauseOnce = true;
+    private bool justResumed = false;
 
     private void Start()
     {
@@ -30,20 +33,53 @@ public class EnemyWeapon : MonoBehaviour
         {
             return;
         }
-        targetDist = Mathf.Pow(target.position.x - shootPos.position.x, 2) + Mathf.Pow(target.position.y - shootPos.position.y, 2);
+        targetDist = Mathf.Abs(Vector3.Distance(transform.position, target.position));
 
         if (targetDist < Mathf.Pow(shootingRadius, 2))
         {
             RotateWeapon();
         }
 
-        if (!hasShot && targetDist < Mathf.Pow(shootingRadius, 2))
+        if (GameStateManager.instance.isPaused)
         {
-            hasShot = true;
-            shoot = true;
-            StartCoroutine(ResetShoot());
-            StartCoroutine(CannonShoot());
+            if (pauseOnce)
+            {
+                pauseOnce = false;
+                justResumed = true;
+                StopCoroutine(shootCoroutine);
+                //Debug.Log("stopped: " + shootCoroutine.GetHashCode());
+            }
+            return;
         }
+
+        if (!pauseOnce)
+        {
+            hasShot = false;
+            pauseOnce = true;
+        }
+
+        if (!hasShot && targetDist < shootingRadius)
+        {
+            if (justResumed)
+            {
+                //Debug.Log("SOLO UNA VOLTA");
+                justResumed = false;
+                StartCoroutine(shootCoroutine);
+                //Debug.Log("started: " + shootCoroutine.GetHashCode());
+                return;
+            }
+
+            if (!justResumed) //FIXARE
+            {
+                shootCoroutine = WeaponShoot();
+                hasShot = true;
+                shoot = true;
+                //pauseOnce = true;
+                StartCoroutine(ResetShoot());
+            }
+            
+        }
+        //Debug.Log("yes");
     }
 
     private void RotateWeapon()
@@ -54,7 +90,7 @@ public class EnemyWeapon : MonoBehaviour
         weaponPos.rotation = Quaternion.Euler(0, angle <= 90 && angle >= -90 ? 0 : 180, angle <= 90 && angle >= -90 ? angle : -angle + 180);
     }
 
-    private IEnumerator CannonShoot()
+    private IEnumerator WeaponShoot() //TO DO: FIX
     {
         yield return new WaitForSecondsRealtime(shootDelay);
 

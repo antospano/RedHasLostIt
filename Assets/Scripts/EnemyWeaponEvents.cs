@@ -10,6 +10,7 @@ public class EnemyWeaponEvents : MonoBehaviour
     [SerializeField] private EnemyWeapon weapon;
     [SerializeField] private GameObject shotTexture;
     private GameObject shot;
+    private GameObject currentShot;
     private event WeaponDelegate OnShoot;
     private bool once = true;
 
@@ -25,19 +26,28 @@ public class EnemyWeaponEvents : MonoBehaviour
 
     private void Update()
     {
-        if (shot)
+        if (GameStateManager.instance.isPaused)
         {
-            shot.transform.position = weapon.GetShootPos().transform.position;
+            return;
         }
-
         if (weapon.shoot && once)
         {
             OnShoot.Invoke();
+        }
+
+        if (shot)
+        {
+            if (!weapon)
+            {
+                Destroy(currentShot);
+            }
+            shot.transform.position = weapon.GetShootPos().transform.position + new Vector3(0, 0, -1);
         }
     }
 
     IEnumerator DestroyShot(GameObject shot)
     {
+        currentShot = shot;
         yield return new WaitForSecondsRealtime(.1f);
         Destroy(shot);
         once = true;

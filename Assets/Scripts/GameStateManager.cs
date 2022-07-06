@@ -1,0 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public delegate void StateChanger(GameState newState);
+
+public class GameStateManager
+{
+    public static GameStateManager instance { get; private set; } = new GameStateManager();
+    public GameState currentState { get; private set; } = GameState.Play;
+    public bool isPaused { get; private set; } = false;
+    public event StateChanger OnStateChange;
+
+    public void ChangeGameState(GameState newState)
+    {
+        switch(newState)
+        {
+            case GameState.Pause:
+                isPaused = true;
+                break;
+            case GameState.Play:
+                isPaused = false;
+                break;
+        }
+        currentState = newState;
+        PauseMenu();
+    }
+
+    public void PauseMenu() //graphics part
+    {
+
+    }
+
+    public void Invoke(GameState newState)
+    {
+        OnStateChange?.Invoke(newState);
+    }
+}

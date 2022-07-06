@@ -9,9 +9,16 @@ public class HealthManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameStateManager.instance.isPaused)
+        {
+            return;
+        }
         if (health.value <= 0)
         {
-            Instantiate<GameObject>(particle, transform.position, Quaternion.identity);
+            if (particle)
+            {
+                Instantiate<GameObject>(particle, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }

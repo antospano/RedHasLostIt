@@ -11,6 +11,10 @@ public class Pickup : MonoBehaviour
 
     private void Update()
     {
+        if (GameStateManager.instance.isPaused)
+        {
+            return;
+        }
         PickupBehavior();
         if (pickedUp)
         {

@@ -13,6 +13,10 @@ public class ParticlePlayer : MonoBehaviour
 
     private void Update()
     {
+        if (GameStateManager.instance.isPaused)
+        {
+            return;
+        }
         if (particles.isStopped)
         {
             Destroy(gameObject);

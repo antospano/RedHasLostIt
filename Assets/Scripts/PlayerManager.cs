@@ -11,6 +11,11 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameStateManager.instance.isPaused)
+        {
+            return;
+        }
+
         x = Input.GetAxisRaw("Horizontal");
         switch (x)
         {

@@ -19,6 +19,10 @@ public class FadeOut : MonoBehaviour
 
     public void Init()
     {
+        if (GameStateManager.instance.isPaused)
+        {
+            return;
+        }
         isFading = true;
         alpha = 1;
         text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);

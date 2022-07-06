@@ -11,6 +11,10 @@ public class PlayerAmmoManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameStateManager.instance.isPaused)
+        {
+            return;
+        }
         if (ammo.value < 0)
         {
             ammo.SetAmmo(0);

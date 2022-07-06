@@ -24,15 +24,20 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
+        if (GameStateManager.instance.isPaused)
+        {
+            return;
+        }
         if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.F))
         {
             hasTriggered = true;
-            canShoot = false;
+            //canShoot = false;
 
             if (currentAmmo > 0 && canShoot)
             {
                 WeaponShoot();
                 hasShot = true;
+                canShoot = false;
                 StartCoroutine(ResetShot());
                 StartCoroutine(CanShoot());
             }

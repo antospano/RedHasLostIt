@@ -10,6 +10,10 @@ public class PlayerHealthManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameStateManager.instance.isPaused)
+        {
+            return;
+        }
         if (player.health.value <= 0)
         {
             player.health.SetHealth(0);

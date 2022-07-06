@@ -17,6 +17,8 @@ public class CharacterController : MonoBehaviour
     public float speed { get; private set; }
     public float drag { get; private set; }
     public Rigidbody2D characterRb { get; private set; }
+    private bool rbSetOnce = false;
+    private Vector2 saveVel;
     //private bool rbExists;
     private Transform p;
 
@@ -39,6 +41,7 @@ public class CharacterController : MonoBehaviour
 
     public void Update()
     {
+        PauseChecks();
         CheckPhysicsParams();
     }
 
@@ -71,6 +74,23 @@ public class CharacterController : MonoBehaviour
             drag = groundDrag;
         }
         characterRb.drag = drag;
+    }
+
+    public void PauseChecks()
+    {
+        if (GameStateManager.instance.isPaused)
+        {
+            rbSetOnce = true;
+            characterRb.bodyType = RigidbodyType2D.Static;
+            return;
+        }
+        if (rbSetOnce)
+        {
+            rbSetOnce = false;
+            characterRb.bodyType = RigidbodyType2D.Dynamic;
+            characterRb.velocity = saveVel;
+        }
+        saveVel = characterRb.velocity;
     }
 
     public Transform GetCharacter()

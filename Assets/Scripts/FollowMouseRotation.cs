@@ -11,6 +11,10 @@ public class FollowMouseRotation : MonoBehaviour
 
     private void Update()
     {
+        if (GameStateManager.instance.isPaused)
+        {
+            return;
+        }
         dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
         /*

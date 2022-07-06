@@ -28,6 +28,10 @@ public class WeaponEvents : MonoBehaviour
 
     private void Update()
     {
+        if (GameStateManager.instance.isPaused)
+        {
+            return;
+        }
         if (shot)
         {
             shot.transform.position = weapon.GetShootPos().transform.position;
@@ -35,7 +39,7 @@ public class WeaponEvents : MonoBehaviour
 
         if (weapon.hasShot && once)
         {
-            OnShoot.Invoke();
+            OnShoot.Invoke(); //PORCODIO
         }
 
         if (weapon.hasTriggered && weapon.currentAmmo == 0)
