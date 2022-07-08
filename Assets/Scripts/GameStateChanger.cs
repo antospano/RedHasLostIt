@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameStateChanger : MonoBehaviour
 {
+    [SerializeField] private GameObject pauseUI;
     GameStateManager inst = GameStateManager.instance;
     private void Start()
     {
@@ -16,7 +17,8 @@ public class GameStateChanger : MonoBehaviour
         {
             //GameStateManager.instance.ChangeGameState(GameStateManager.instance.currentState == GameState.Play ? GameState.Pause : GameState.Play);
             inst.Invoke(inst.currentState == GameState.Play ? GameState.Pause : GameState.Play);
-            Debug.Log("coc: " + inst.currentState);
+            pauseUI.SetActive(inst.isPaused);
+            //Debug.Log("coc: " + inst.currentState);
         }
     }
 }

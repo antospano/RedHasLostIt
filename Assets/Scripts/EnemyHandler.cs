@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class EnemyHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start() //TO DO
+    bool rbSetOnce = false;
+    [SerializeField] Rigidbody2D characterRb;
+    Vector2 saveVel;
+
+    private void Update()
     {
-        
+        PauseChecks();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PauseChecks()
     {
-        
+        if (GameStateManager.instance.isPaused)
+        {
+            rbSetOnce = true;
+            characterRb.bodyType = RigidbodyType2D.Static;
+            return;
+        }
+        if (rbSetOnce)
+        {
+            rbSetOnce = false;
+            characterRb.bodyType = RigidbodyType2D.Dynamic;
+            characterRb.velocity = saveVel;
+        }
+        saveVel = characterRb.velocity;
     }
 }

@@ -19,8 +19,10 @@ public class EnemyWeapon : MonoBehaviour
     private float targetDist;
     private bool hasShot = false;
     private IEnumerator shootCoroutine;
+    private IEnumerator currentCoroutine;
+    //private IEnumerator currentCoroutine;
     private bool pauseOnce = true;
-    private bool justResumed = false;
+    //private bool justResumed = false;
 
     private void Start()
     {
@@ -29,6 +31,18 @@ public class EnemyWeapon : MonoBehaviour
 
     private void Update()
     {
+        /*
+        if (GameStateManager.instance.isPaused)
+        {
+            if (shootCoroutine != null && pauseOnce)
+            {
+                pauseOnce = false;
+                shoot = false;
+                currentCoroutine = shootCoroutine;
+                StopCoroutine(shootCoroutine);
+            }
+            return;
+        } */
         if (!target)
         {
             return;
@@ -39,7 +53,7 @@ public class EnemyWeapon : MonoBehaviour
         {
             RotateWeapon();
         }
-
+        /*
         if (GameStateManager.instance.isPaused)
         {
             if (pauseOnce)
@@ -50,33 +64,22 @@ public class EnemyWeapon : MonoBehaviour
                 //Debug.Log("stopped: " + shootCoroutine.GetHashCode());
             }
             return;
-        }
+        } */
 
+        /*
         if (!pauseOnce)
         {
-            hasShot = false;
-            pauseOnce = true;
-        }
+            
+            //StartCoroutine(currentCoroutine);
+        } */
 
         if (!hasShot && targetDist < shootingRadius)
         {
-            if (justResumed)
-            {
-                //Debug.Log("SOLO UNA VOLTA");
-                justResumed = false;
-                StartCoroutine(shootCoroutine);
-                //Debug.Log("started: " + shootCoroutine.GetHashCode());
-                return;
-            }
-
-            if (!justResumed) //FIXARE
-            {
-                shootCoroutine = WeaponShoot();
-                hasShot = true;
-                shoot = true;
-                //pauseOnce = true;
-                StartCoroutine(ResetShoot());
-            }
+            hasShot = true;
+            //pauseOnce = true;
+            shootCoroutine = WeaponShoot();
+            StartCoroutine(shootCoroutine);
+            StartCoroutine(ResetShoot());
             
         }
         //Debug.Log("yes");
@@ -93,7 +96,14 @@ public class EnemyWeapon : MonoBehaviour
     private IEnumerator WeaponShoot() //TO DO: FIX
     {
         yield return new WaitForSecondsRealtime(shootDelay);
+        if (GameStateManager.instance.isPaused)
+        {
+            hasShot = false;
+            pauseOnce = true;
+            yield break;
+        }
 
+        shoot = true;
         bulletPrefab = Instantiate<Bullet>(bullet, shootPos.position, Quaternion.identity);
         bulletPrefab.SetSafeTag("EnemyWeapon");
         bulletPrefab.SetScale(bulletScale);

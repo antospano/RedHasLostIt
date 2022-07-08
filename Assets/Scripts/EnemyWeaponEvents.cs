@@ -19,7 +19,10 @@ public class EnemyWeaponEvents : MonoBehaviour
         OnShoot += (() =>
         {
             once = false;
-            shot = Instantiate<GameObject>(shotTexture, weapon.GetShootPos().position, Quaternion.identity);
+            if (!GameStateManager.instance.isPaused)
+            {
+                shot = Instantiate<GameObject>(shotTexture, weapon.GetShootPos().position, Quaternion.identity);
+            }
             StartCoroutine(DestroyShot(shot));
         });
     }

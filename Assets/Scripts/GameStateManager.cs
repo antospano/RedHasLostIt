@@ -10,6 +10,7 @@ public class GameStateManager
     public GameState currentState { get; private set; } = GameState.Play;
     public bool isPaused { get; private set; } = false;
     public event StateChanger OnStateChange;
+    //private GameObject pauseUI;
 
     public void ChangeGameState(GameState newState)
     {
@@ -23,12 +24,7 @@ public class GameStateManager
                 break;
         }
         currentState = newState;
-        PauseMenu();
-    }
-
-    public void PauseMenu() //graphics part
-    {
-
+        //PauseMenu();
     }
 
     public void Invoke(GameState newState)
