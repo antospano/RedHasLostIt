@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 8820958308839795917}
-  particle: {fileID: 9068787994315803344, guid: cf43c82a9f763427193796e1c6f31811, type: 3}
+  particle: {fileID: 1465810299354517505, guid: 6f580abd67d2d4f02b95aa37000f772a, type: 3}
 --- !u!114 &8820958308839795917
 MonoBehaviour:
   m_ObjectHideFlags: 0
