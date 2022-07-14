@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct Item
+{
+    public GameObject item;
+    public float minY;
+    public float maxY;
+}
+
 public class TerrainGeneration : MonoBehaviour
 {
     [SerializeField] private Transform genPoint;
@@ -9,9 +17,13 @@ public class TerrainGeneration : MonoBehaviour
     [SerializeField] private GameObject grassObj;
     [SerializeField] private float terrainWidth;
     [SerializeField] private float terrainHeight;
-    [SerializeField] private GameObject[] pickupTypes;
-    [SerializeField] private int pickupSpawnOdd;
-    [SerializeField] private int randomPickupHeight;
+    [SerializeField] private Item[] items;
+    [SerializeField] private int itemSpawnRange;
+    [SerializeField] private float perlinPos;
+    [SerializeField] private float perlinZoomMultiplier;
+    [SerializeField] private Vector2 xOffsetMinMax;
+    [SerializeField] private Vector2 yOffsetMinMax;
+    //[SerializeField] private int randomItemHeight;
     private Vector2 dirtSize;
     private Vector2 grassSize;
     private float perlinValue;
@@ -26,9 +38,16 @@ public class TerrainGeneration : MonoBehaviour
     {
         dirtSize = new Vector2(dirtObj.transform.localScale.x, dirtObj.transform.localScale.y);
         grassSize = new Vector2(grassObj.transform.localScale.x, grassObj.transform.localScale.y);
-        xOffset = Random.Range(1000, 5000);
-        yOffset = Random.Range(1000, 5000);
-        seed = Random.Range(0, pickupSpawnOdd);
+        Generate();
+    }
+
+    public void Generate()
+    {
+        xOffset = Random.Range(xOffsetMinMax.x, xOffsetMinMax.y);
+        yOffset = Random.Range(yOffsetMinMax.x, yOffsetMinMax.y);
+        seed = Random.Range(0, itemSpawnRange);
+        perlinPos = perlinPos > 0 ? perlinPos : 1;
+        perlinZoomMultiplier = perlinZoomMultiplier > 0 ? perlinZoomMultiplier : 1;
 
         for (int i = 0; i < terrainWidth; i++)
         {
@@ -36,7 +55,8 @@ public class TerrainGeneration : MonoBehaviour
             {
                 if (!perlinDone)
                 {
-                    perlinValue = Mathf.PerlinNoise(((genPoint.position.x + xOffset + i) * dirtSize.x) / 30, ((genPoint.position.y + yOffset + j) * dirtSize.y) / 30) * 10;
+                    perlinValue = Mathf.PerlinNoise(((genPoint.position.x + xOffset + i) * dirtSize.x) / perlinPos, ((genPoint.position.y + yOffset + j) * dirtSize.y) / perlinPos) * perlinZoomMultiplier; // / 30 overall * 10
+                    //perlinValue = PerlinManager.TerrainPerlinValue(genPoint, new Vector2(1000, 5000), new Vector2(1000, 5000), dirtSize, grassSize, itemSpawnRange, new Vector2(i, j));
                     perlinDone = true;
                 }
                 Instantiate<GameObject>(dirtObj, new Vector3((genPoint.position.x + i) * dirtSize.x, ((genPoint.position.y + j) * dirtSize.y) + perlinValue), Quaternion.identity);
@@ -45,9 +65,10 @@ public class TerrainGeneration : MonoBehaviour
             grassHeight = ((genPoint.position.y + terrainHeight) * grassSize.y) + perlinValue;
             GameObject grass = Instantiate<GameObject>(grassObj, new Vector3(grassX, grassHeight), Quaternion.identity);
 
-            if (Random.Range(0, pickupSpawnOdd) == seed)
+            if (Random.Range(0, itemSpawnRange) == seed)
             {
-                SpawnPickup.Spawn(pickupTypes[Random.Range(0, pickupTypes.Length)], new Vector2(grassX, grassHeight + Random.Range(1, randomPickupHeight)));
+                int index = Random.Range(0, items.Length);
+                SpawnPickup.Spawn(items[index].item, new Vector2(grassX, grassHeight + Random.Range(items[index].minY, items[index].maxY)));
                 //Instantiate<GameObject>(pickupTypes[0], grass.transform.position, Quaternion.identity);
             }
             perlinDone = false;

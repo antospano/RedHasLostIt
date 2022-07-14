@@ -21,7 +21,7 @@ public class EnemyWeapon : MonoBehaviour
     private IEnumerator shootCoroutine;
     private IEnumerator currentCoroutine;
     //private IEnumerator currentCoroutine;
-    private bool pauseOnce = true;
+    //private bool pauseOnce = true;
     //private bool justResumed = false;
 
     private void Start()
@@ -99,7 +99,7 @@ public class EnemyWeapon : MonoBehaviour
         if (GameStateManager.instance.isPaused)
         {
             hasShot = false;
-            pauseOnce = true;
+            //pauseOnce = true;
             yield break;
         }
 

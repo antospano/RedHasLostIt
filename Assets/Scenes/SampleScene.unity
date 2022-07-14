@@ -224,13 +224,24 @@ MonoBehaviour:
   grassObj: {fileID: 6155583396520013339, guid: d523584b1a71b426e8713c1769c4e3bf, type: 3}
   terrainWidth: 160
   terrainHeight: 6
-  pickupTypes:
-  - {fileID: 6557293762289201233, guid: 5d078438ee8fb4867bd4444ad02ff2d4, type: 3}
-  - {fileID: 6246457162875835208, guid: 804b55179aeae412493ea7d79d520a11, type: 3}
-  - {fileID: 7697153267111409353, guid: 7b02712ff24d84314af4090bea50b149, type: 3}
-  - {fileID: 7697153267111409353, guid: 7b02712ff24d84314af4090bea50b149, type: 3}
-  pickupSpawnOdd: 15
-  randomPickupHeight: 5
+  items:
+  - item: {fileID: 6557293762289201233, guid: 5d078438ee8fb4867bd4444ad02ff2d4, type: 3}
+    minY: 1
+    maxY: 8
+  - item: {fileID: 6246457162875835208, guid: 804b55179aeae412493ea7d79d520a11, type: 3}
+    minY: 1
+    maxY: 8
+  - item: {fileID: 7697153267111409353, guid: 7b02712ff24d84314af4090bea50b149, type: 3}
+    minY: 1
+    maxY: 1
+  - item: {fileID: 6985969474573680750, guid: ac1db3a7a24e649dba0ef99a30739c6f, type: 3}
+    minY: 5
+    maxY: 8
+  itemSpawnRange: 15
+  perlinPos: 30
+  perlinZoomMultiplier: 8
+  xOffsetMinMax: {x: 1000, y: 5000}
+  yOffsetMinMax: {x: 1000, y: 5000}
 --- !u!4 &171716340
 Transform:
   m_ObjectHideFlags: 0
@@ -2932,6 +2943,10 @@ PrefabInstance:
     - target: {fileID: 6985969474573680750, guid: ac1db3a7a24e649dba0ef99a30739c6f, type: 3}
       propertyPath: m_Name
       value: CannonPos
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985969474573680750, guid: ac1db3a7a24e649dba0ef99a30739c6f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6985969474573680751, guid: ac1db3a7a24e649dba0ef99a30739c6f, type: 3}
       propertyPath: target
