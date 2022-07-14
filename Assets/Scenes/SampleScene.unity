@@ -237,7 +237,7 @@ MonoBehaviour:
   - item: {fileID: 6985969474573680750, guid: ac1db3a7a24e649dba0ef99a30739c6f, type: 3}
     minY: 5
     maxY: 8
-  itemSpawnRange: 15
+  itemSpawnRange: 10
   perlinPos: 30
   perlinZoomMultiplier: 8
   xOffsetMinMax: {x: 1000, y: 5000}
