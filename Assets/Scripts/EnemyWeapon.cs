@@ -11,15 +11,15 @@ public class EnemyWeapon : MonoBehaviour
     [SerializeField] private float shootForce;
     [SerializeField] private float shootDelay;
     [SerializeField] private float shootingRadius;
-    public bool shoot { get; private set; } = false;
+    public bool isShooting { get; private set; } = false;
     private Transform target;
     private Bullet bulletPrefab;
     private Vector2 weaponDir;
     private float angle;
     private float targetDist;
-    private bool hasShot = false;
+    private bool hasShot = false; //CHECk
     private IEnumerator shootCoroutine;
-    private IEnumerator currentCoroutine;
+    //private IEnumerator currentCoroutine;
     //private IEnumerator currentCoroutine;
     //private bool pauseOnce = true;
     //private bool justResumed = false;
@@ -82,6 +82,10 @@ public class EnemyWeapon : MonoBehaviour
             StartCoroutine(ResetShoot());
             
         }
+        else
+        {
+            StartCoroutine(ResetShoot());
+        }
         //Debug.Log("yes");
     }
 
@@ -103,7 +107,7 @@ public class EnemyWeapon : MonoBehaviour
             yield break;
         }
 
-        shoot = true;
+        isShooting = true;
         bulletPrefab = Instantiate<Bullet>(bullet, shootPos.position, Quaternion.identity);
         bulletPrefab.SetSafeTag("EnemyWeapon");
         bulletPrefab.SetScale(bulletScale);
@@ -114,7 +118,7 @@ public class EnemyWeapon : MonoBehaviour
     private IEnumerator ResetShoot()
     {
         yield return new WaitForSecondsRealtime(.001f);
-        shoot = false;
+        isShooting = false;
     }
 
     public Transform GetShootPos()

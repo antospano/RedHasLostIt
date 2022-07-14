@@ -12,18 +12,18 @@ public class EnemyWeaponEvents : MonoBehaviour
     private GameObject shot;
     private GameObject currentShot;
     private event WeaponDelegate OnShoot;
-    private bool once = true;
 
     private void Start()
     {
         OnShoot += (() =>
         {
-            once = false;
+            //once = false;
             if (!GameStateManager.instance.isPaused)
             {
                 shot = Instantiate<GameObject>(shotTexture, weapon.GetShootPos().position, Quaternion.identity);
+                //Debug.Log("coc");
+                StartCoroutine(DestroyShot(shot));
             }
-            StartCoroutine(DestroyShot(shot));
         });
     }
 
@@ -33,8 +33,9 @@ public class EnemyWeaponEvents : MonoBehaviour
         {
             return;
         }
-        if (weapon.shoot && once)
+        if (weapon.isShooting) // && once
         {
+            //Debug.Log("bruh? " + weapon.isShooting);
             OnShoot.Invoke();
         }
 
@@ -53,6 +54,6 @@ public class EnemyWeaponEvents : MonoBehaviour
         currentShot = shot;
         yield return new WaitForSecondsRealtime(.1f);
         Destroy(shot);
-        once = true;
+        //once = true;
     }
 }
