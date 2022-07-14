@@ -19,10 +19,6 @@ public class EnemyWeapon : MonoBehaviour
     private float targetDist;
     private bool hasShot = false; //CHECk
     private IEnumerator shootCoroutine;
-    //private IEnumerator currentCoroutine;
-    //private IEnumerator currentCoroutine;
-    //private bool pauseOnce = true;
-    //private bool justResumed = false;
 
     private void Start()
     {
@@ -31,18 +27,6 @@ public class EnemyWeapon : MonoBehaviour
 
     private void Update()
     {
-        /*
-        if (GameStateManager.instance.isPaused)
-        {
-            if (shootCoroutine != null && pauseOnce)
-            {
-                pauseOnce = false;
-                shoot = false;
-                currentCoroutine = shootCoroutine;
-                StopCoroutine(shootCoroutine);
-            }
-            return;
-        } */
         if (!target)
         {
             return;
@@ -53,25 +37,6 @@ public class EnemyWeapon : MonoBehaviour
         {
             RotateWeapon();
         }
-        /*
-        if (GameStateManager.instance.isPaused)
-        {
-            if (pauseOnce)
-            {
-                pauseOnce = false;
-                justResumed = true;
-                StopCoroutine(shootCoroutine);
-                //Debug.Log("stopped: " + shootCoroutine.GetHashCode());
-            }
-            return;
-        } */
-
-        /*
-        if (!pauseOnce)
-        {
-            
-            //StartCoroutine(currentCoroutine);
-        } */
 
         if (!hasShot && targetDist < shootingRadius)
         {

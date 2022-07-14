@@ -35,7 +35,6 @@ public class EnemyWeaponEvents : MonoBehaviour
         }
         if (weapon.isShooting) // && once
         {
-            //Debug.Log("bruh? " + weapon.isShooting);
             OnShoot.Invoke();
         }
 
@@ -54,6 +53,5 @@ public class EnemyWeaponEvents : MonoBehaviour
         currentShot = shot;
         yield return new WaitForSecondsRealtime(.1f);
         Destroy(shot);
-        //once = true;
     }
 }

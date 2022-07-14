@@ -224,6 +224,8 @@ MonoBehaviour:
   grassObj: {fileID: 6155583396520013339, guid: d523584b1a71b426e8713c1769c4e3bf, type: 3}
   terrainWidth: 160
   terrainHeight: 6
+  player: {fileID: 325134125}
+  playerYOffset: 1.5
   items:
   - item: {fileID: 6557293762289201233, guid: 5d078438ee8fb4867bd4444ad02ff2d4, type: 3}
     minY: 1
@@ -682,6 +684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cc: {fileID: 325134126}
   animator: {fileID: 325134135}
+  terrainGen: {fileID: 171716339}
 --- !u!50 &325134131
 Rigidbody2D:
   serializedVersion: 4

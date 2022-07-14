@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] CharacterController cc;
+    [SerializeField] private CharacterController cc;
     [SerializeField] private Animator animator;
+    [SerializeField] private TerrainGeneration terrainGen;
     private float x;
     private float angle = 0;
 
