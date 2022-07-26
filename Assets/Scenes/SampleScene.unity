@@ -224,9 +224,9 @@ MonoBehaviour:
   dirtObj: {fileID: 4511029403491517692, guid: 1834cec30c09642e49383ade2191a207, type: 3}
   grassObj: {fileID: 6155583396520013339, guid: d523584b1a71b426e8713c1769c4e3bf, type: 3}
   terrainWidth: 480
-  terrainHeight: 6
+  terrainHeight: 10
   player: {fileID: 325134125}
-  playerYOffset: 2
+  playerYOffset: 2.5
   items:
   - item: {fileID: 6557293762289201233, guid: 5d078438ee8fb4867bd4444ad02ff2d4, type: 3}
     minY: 1
@@ -240,9 +240,9 @@ MonoBehaviour:
   - item: {fileID: 6985969474573680750, guid: ac1db3a7a24e649dba0ef99a30739c6f, type: 3}
     minY: 5
     maxY: 8
-  itemSpawnRange: 15
-  perlinPos: 40
-  perlinZoomMultiplier: 12
+  itemSpawnRange: 10
+  perlinPos: 30
+  perlinZoomMultiplier: 10
   xOffsetMinMax: {x: 1000, y: 5000}
   yOffsetMinMax: {x: 1000, y: 5000}
 --- !u!4 &171716340
