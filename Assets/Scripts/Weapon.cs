@@ -55,7 +55,7 @@ public class Weapon : MonoBehaviour
     {
         bulletPrefab = Instantiate<Bullet>(bullet, new Vector3(shootPos.position.x, shootPos.position.y, 0), Quaternion.identity);
         bulletPrefab.Shoot(transform.right, shootForce);
-        currentAmmo -= 1;
+        currentAmmo--;
     }
 
     IEnumerator ResetShot()

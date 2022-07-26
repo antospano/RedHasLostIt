@@ -18,6 +18,7 @@ public class PlayerHealthManager : MonoBehaviour
         {
             player.health.SetHealth(0);
             Destroy(player.GetPlayer());
+            GameStateManager.instance.ChangeGameState(GameState.Over);
         }
         else if (player.health.value > maxHealth)
         {
