@@ -25,8 +25,8 @@ public class EnemyHandler : MonoBehaviour
         {
             rbSetOnce = false;
             characterRb.bodyType = RigidbodyType2D.Dynamic;
-            characterRb.velocity = saveVel;
+            characterRb.linearVelocity = saveVel;
         }
-        saveVel = characterRb.velocity;
+        saveVel = characterRb.linearVelocity;
     }
 }

@@ -73,7 +73,7 @@ public class CharacterController : MonoBehaviour
             speed = groundSpeed;
             drag = groundDrag;
         }
-        characterRb.drag = drag;
+        characterRb.linearDamping = drag;
     }
 
     public void PauseChecks()
@@ -88,9 +88,9 @@ public class CharacterController : MonoBehaviour
         {
             rbSetOnce = false;
             characterRb.bodyType = RigidbodyType2D.Dynamic;
-            characterRb.velocity = saveVel;
+            characterRb.linearVelocity = saveVel;
         }
-        saveVel = characterRb.velocity;
+        saveVel = characterRb.linearVelocity;
     }
 
     public Transform GetCharacter()

@@ -28,11 +28,11 @@ public class BackgroundScroll : MonoBehaviour
             return;
         }
 
-        if (Mathf.Abs(cc.characterRb.velocity.x) == 2)
+        if (Mathf.Abs(cc.characterRb.linearVelocity.x) == 2)
         {
             return;
         }
-        offset += scrollSpeed * cc.characterRb.velocity.x;
+        offset += scrollSpeed * cc.characterRb.linearVelocity.x;
         material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
     }
 }
