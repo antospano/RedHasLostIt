@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ammo : MonoBehaviour
 {
+
     [SerializeField] private int setValue;
     public int value { get; private set; } = 1;
 
