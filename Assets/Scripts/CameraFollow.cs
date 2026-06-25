@@ -13,6 +13,6 @@ public class CameraFollow : MonoBehaviour
             return;
         }
 
-        Camera.main.transform.position = new Vector3(target.position.x, target.position.y, -5);
+        Camera.main.transform.position = new Vector3(target.position.x, target.position.y + 2, -5);
     }
 }
