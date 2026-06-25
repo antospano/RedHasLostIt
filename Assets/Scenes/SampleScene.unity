@@ -775,7 +775,7 @@ MonoBehaviour:
   groundCheckDist: 0.1
   jumpForce: 7
   groundSpeed: 2
-  airSpeed: 0.2
+  airSpeed: 0.02
   groundDrag: 10
   airDrag: 0.1
   deathPanel: {fileID: 1043160957}
