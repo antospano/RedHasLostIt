@@ -22,6 +22,7 @@ public class GameStateManager
                 break;
             case GameState.Play:
                 isPaused = false;
+                isOver = false;
                 break;
             case GameState.Over:
                 isPaused = true;

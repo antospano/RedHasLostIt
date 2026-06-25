@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1465810299354517507}
   - component: {fileID: 1465810299354517506}
   m_Layer: 0
-  m_Name: BloodParticle
+  m_Name: GreenBloodParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4794,7 +4794,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 18acddaa42fff4b5cae781de4b7bc9cc, type: 2}
+  - {fileID: 2100000, guid: 3af115abdce2dedcabd601faadfae996, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

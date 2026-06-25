@@ -14,6 +14,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float airSpeed;
     [SerializeField] private float groundDrag;
     [SerializeField] private float airDrag;
+    [SerializeField] private Transform deathPanel;
     public float speed { get; private set; }
     public float drag { get; private set; }
     public Rigidbody2D characterRb { get; private set; }
@@ -26,6 +27,11 @@ public class CharacterController : MonoBehaviour
     {
         p = player.GetPlayer().transform;
         characterRb = Check.ComponentExists<Rigidbody2D>(p.gameObject);
+
+        if (deathPanel != null)
+        {
+            deathPanel.gameObject.SetActive(false);
+        }
 
         if (!characterRb)
         {

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9b625c3c9081c39049b1291c2be71947
+guid: e1cc2b4e84834b14ab21ea371eca0c07
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2918153358401894322
-    second: wood_box_0
+      213: -5867216972202035343
+    second: green_blood_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wood_box_0
+      name: green_blood_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 16
-        height: 16
+        width: 9
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e4887584bf2a087d0800000000000000
-      internalID: -2918153358401894322
+      spriteID: 17731c7ef35739ea0800000000000000
+      internalID: -5867216972202035343
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wood_box_0: -2918153358401894322
+      green_blood_0: -5867216972202035343
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
