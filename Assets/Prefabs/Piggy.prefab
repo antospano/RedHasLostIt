@@ -171,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPos: {fileID: 7697153267069852489}
   shootPos: {fileID: 7697153266475681299}
-  bullet: {fileID: 1854696421372260324, guid: 4aea712887ba14838be791feaeac3bba, type: 3}
+  bullet: {fileID: 1854696421372260324, guid: 1dd23134e8c066c4fbeb976f6556ca62, type: 3}
   bulletScale: 1
   shootForce: 40
   shootDelay: 1.5

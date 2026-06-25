@@ -328,14 +328,19 @@ MonoBehaviour:
   items:
   - item: {fileID: 6557293762289201233, guid: 5d078438ee8fb4867bd4444ad02ff2d4, type: 3}
     minY: 1
-    maxY: 8
+    maxY: 3
   - item: {fileID: 6246457162875835208, guid: 804b55179aeae412493ea7d79d520a11, type: 3}
     minY: 1
-    maxY: 8
-  - item: {fileID: 7697153267111409353, guid: 7b02712ff24d84314af4090bea50b149, type: 3}
-    minY: 1
-    maxY: 1
+    maxY: 3
+  entities:
+  - entity: {fileID: 6246457162875835208, guid: 804b55179aeae412493ea7d79d520a11, type: 3}
+    spawnY: 0
+  structures:
+  - structure: {fileID: 7590042473265430847, guid: acdbf686de80442da9749689d842d9d8, type: 3}
+    spawnY: 0
   itemSpawnRange: 10
+  structureSpawnRange: 80
+  entitySpawnRange: 20
   perlinPos: 30
   perlinZoomMultiplier: 2
   xOffsetMinMax: {x: 1000, y: 5000}
@@ -770,7 +775,7 @@ MonoBehaviour:
   groundCheckDist: 0.1
   jumpForce: 7
   groundSpeed: 2
-  airSpeed: 0.01
+  airSpeed: 0.2
   groundDrag: 10
   airDrag: 0.1
   deathPanel: {fileID: 1043160957}
@@ -843,7 +848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373a395d23e6f094bbecc23829c72eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setValue: 2
+  setValue: 20
   particle: {fileID: 1465810299354517505, guid: 8a90d269950bf4abba25e15b7b77bdf0, type: 3}
 --- !u!114 &325134134
 MonoBehaviour:
@@ -1423,17 +1428,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Out of ammo!
+  m_text: 'Out of ammo!
+
+    Press R'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 255
-  m_fontColor: {r: 1, g: 0, b: 0, a: 0}
+    rgba: 4210943
+  m_fontColor: {r: 1, g: 0.25, b: 0.25, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2099,7 +2106,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -328.99997, y: -290.1}
+  m_AnchoredPosition: {x: -328.99997, y: -304.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1193359044
@@ -2261,7 +2268,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -329, y: -285}
+  m_AnchoredPosition: {x: -329, y: -299.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1248841200
@@ -3324,7 +3331,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: PAUSE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3391,7 +3398,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1623082624

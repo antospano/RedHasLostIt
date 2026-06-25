@@ -10,6 +10,20 @@ public struct Item
     public float maxY;
 }
 
+[System.Serializable]
+public struct Entity
+{
+    public GameObject entity;
+    public float spawnY;
+}
+
+[System.Serializable]
+public struct Structure
+{
+    public GameObject structure;
+    public float spawnY;
+}
+
 public class TerrainGeneration : MonoBehaviour
 {
     [SerializeField] private Transform genPoint;
@@ -20,7 +34,11 @@ public class TerrainGeneration : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private float playerYOffset;
     [SerializeField] private Item[] items;
+    [SerializeField] private Entity[] entities;
+    [SerializeField] private Structure[] structures;
     [SerializeField] private int itemSpawnRange;
+    [SerializeField] private int structureSpawnRange;
+    [SerializeField] private int entitySpawnRange;
     [SerializeField] private float perlinPos;
     [SerializeField] private float perlinZoomMultiplier;
     [SerializeField] private Vector2 xOffsetMinMax;
@@ -33,7 +51,9 @@ public class TerrainGeneration : MonoBehaviour
     private bool perlinDone = false;
     private float grassX;
     private float grassY;
-    private int seed;
+    private int itemSpawnValue;
+    private int structureSpawnValue;
+    private int entitySpawnValue;
 
     private void Start()
     {
@@ -46,7 +66,9 @@ public class TerrainGeneration : MonoBehaviour
     {
         xOffset = Random.Range(xOffsetMinMax.x, xOffsetMinMax.y);
         yOffset = Random.Range(yOffsetMinMax.x, yOffsetMinMax.y);
-        seed = Random.Range(0, itemSpawnRange);
+        itemSpawnValue = Random.Range(0, itemSpawnRange);
+        structureSpawnValue = Random.Range(0, structureSpawnRange);
+        entitySpawnValue = Random.Range(0, entitySpawnRange);
         perlinPos = perlinPos > 0 ? perlinPos : 1;
         perlinZoomMultiplier = perlinZoomMultiplier > 0 ? perlinZoomMultiplier : 1;
 
@@ -70,10 +92,23 @@ public class TerrainGeneration : MonoBehaviour
                 SetPlayerY(grassY + playerYOffset);
             }
 
-            if (Random.Range(0, itemSpawnRange) == seed)
+            if (Random.Range(0, itemSpawnRange) == itemSpawnValue)
             {
                 int index = Random.Range(0, items.Length);
+                Debug.Log(index);
                 SpawnPickup.Spawn(items[index].item, new Vector2(grassX, grassY + Random.Range(items[index].minY, items[index].maxY)));
+            }
+
+            if (Random.Range(0, structureSpawnRange) == structureSpawnValue)
+            {
+                int index = Random.Range(0, structures.Length - 1);
+                Instantiate<GameObject>(structures[index].structure, new Vector3(grassX, grassY + structures[index].spawnY), Quaternion.identity);
+            }
+
+            if (Random.Range(0, entitySpawnRange) == entitySpawnValue)
+            {
+                int index = Random.Range(0, entities.Length - 1);
+                SpawnPickup.Spawn(entities[index].entity, new Vector2(grassX, grassY + entities[index].spawnY));
             }
             perlinDone = false;
         }

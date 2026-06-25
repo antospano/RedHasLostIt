@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373a395d23e6f094bbecc23829c72eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setValue: 30
+  setValue: 10
   particle: {fileID: 1465810299354517505, guid: 6f580abd67d2d4f02b95aa37000f772a, type: 3}
 --- !u!114 &8820958308839795916
 MonoBehaviour:
