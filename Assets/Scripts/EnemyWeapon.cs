@@ -65,7 +65,6 @@ public class EnemyWeapon : MonoBehaviour
 
     private IEnumerator WeaponShoot() //TO DO: FIX
     {
-        SoundFXManager.instance.PlaySoundFX(soundClip, transform, 1.0f);
         yield return new WaitForSecondsRealtime(shootDelay);
         if (GameStateManager.instance.isPaused)
         {
@@ -75,6 +74,7 @@ public class EnemyWeapon : MonoBehaviour
         }
 
         isShooting = true;
+        SoundFXManager.instance.PlaySoundFX(soundClip, transform, 1.0f);
         bulletPrefab = Instantiate<Bullet>(bullet, shootPos.position, Quaternion.identity);
         bulletPrefab.SetSafeTag("EnemyWeapon");
         bulletPrefab.SetScale(bulletScale);
