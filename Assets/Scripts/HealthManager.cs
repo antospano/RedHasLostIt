@@ -21,7 +21,7 @@ public class HealthManager : MonoBehaviour
             if (gameObject.tag == "Piggy")
             {
                 SoundFXManager.instance.PlaySoundFX(piggyDeathSoundClip, transform, 1.0f);
-                Instantiate(coinPickup, transform.position, Quaternion.identity);
+                Instantiate(coinPickup, new Vector2(transform.position.x, transform.position.y + 1.0f), Quaternion.identity);
             }
             else if (gameObject.tag == "Box")
             {
