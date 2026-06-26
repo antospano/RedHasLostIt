@@ -6,6 +6,7 @@ public class HealthManager : MonoBehaviour
 {
     [SerializeField] Health health;
     [SerializeField] GameObject particle;
+    [SerializeField] GameObject coinPickup;
     [SerializeField] AudioClip piggyDeathSoundClip;
     [SerializeField] AudioClip boxDeathSoundClip;
 
@@ -20,6 +21,7 @@ public class HealthManager : MonoBehaviour
             if (gameObject.tag == "Piggy")
             {
                 SoundFXManager.instance.PlaySoundFX(piggyDeathSoundClip, transform, 1.0f);
+                Instantiate(coinPickup, transform.position, Quaternion.identity);
             }
             else if (gameObject.tag == "Box")
             {
@@ -27,7 +29,7 @@ public class HealthManager : MonoBehaviour
             }
             if (particle)
             {
-                Instantiate<GameObject>(particle, transform.position, Quaternion.identity);
+                Instantiate(particle, transform.position, Quaternion.identity);
             }
             Destroy(gameObject);
         }

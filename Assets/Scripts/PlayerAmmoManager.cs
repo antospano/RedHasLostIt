@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerAmmoManager : MonoBehaviour
 {
-    [SerializeField] private Ammo ammo;
-    [SerializeField] private Weapon weapon;
+    [SerializeField] private Player player;
     [SerializeField] private DisplayValue displayAmmo;
     [SerializeField] private DisplayValue displayWeaponAmmo;
 
@@ -15,12 +14,12 @@ public class PlayerAmmoManager : MonoBehaviour
         {
             return;
         }
-        if (ammo.value < 0)
+        if (player.ammo.value < 0)
         {
-            ammo.SetAmmo(0);
+            player.ammo.SetAmmo(0);
         }
 
-        displayAmmo.value = ammo.value;
-        displayWeaponAmmo.value = weapon.currentAmmo;
+        displayAmmo.value = player.ammo.value;
+        displayWeaponAmmo.value = player.GetWeapon().currentAmmo;
     }
 }

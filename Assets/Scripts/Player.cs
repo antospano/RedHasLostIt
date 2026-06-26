@@ -7,7 +7,9 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Weapon weapon;
     [SerializeField] private AudioClip audioClip;
-    public Health health;
+    [SerializeField] public Health health;
+    [SerializeField] public Points points;
+    [SerializeField] public Ammo ammo;
 
     public void Start()
     {

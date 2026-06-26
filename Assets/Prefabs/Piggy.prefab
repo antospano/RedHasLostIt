@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 7697153265812786115}
   m_Layer: 0
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -367,6 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 7697153267111409352}
   particle: {fileID: 1465810299354517505, guid: d477c543f506f2b8288103734ea1a475, type: 3}
+  coinPickup: {fileID: 7412438938527261211, guid: 5d56734f76379726992c8bd133db8445, type: 3}
   piggyDeathSoundClip: {fileID: 8300000, guid: 1b717a96991be7b5ba2d497962c73a61, type: 3}
   boxDeathSoundClip: {fileID: 8300000, guid: 52eef217dd35aa1cbad52d6b5e22dc49, type: 3}
 --- !u!114 &7697153267111409352
@@ -381,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373a395d23e6f094bbecc23829c72eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setValue: 5
+  setValue: 4
   particle: {fileID: 1465810299354517505, guid: d477c543f506f2b8288103734ea1a475, type: 3}
 --- !u!50 &7697153267111409364
 Rigidbody2D:
