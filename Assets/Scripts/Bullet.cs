@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private int damageAmount;
     [SerializeField] private string bulletTag;
     [SerializeField] private float bulletScale;
+    [SerializeField] private AudioClip piggyDamageClip;
     private Health objHealth;
     private string safeTag;
     private string checkTag;
@@ -26,18 +27,23 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        checkTag = collision.gameObject.tag;
-        objHealth = collision.GetComponent<Health>();
-
-        if (checkTag == bulletTag)
+        if (collision.CompareTag(bulletTag))
         {
             return;
         }
+        
+        checkTag = collision.gameObject.tag;
+        objHealth = collision.GetComponent<Health>();
 
         if (checkTag != safeTag)
         {
             if (objHealth)
             {
+                if (checkTag == "Piggy")
+                {
+                    SoundFXManager.instance.PlaySoundFX(piggyDamageClip, transform, 1.0f);
+                }
+                
                 objHealth.SetHealth(objHealth.value - damageAmount);
             }
             Destroy(gameObject);

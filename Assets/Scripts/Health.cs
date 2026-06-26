@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     [SerializeField] GameObject particle;
     public int value { get; private set; }
 
-    private void Start()
+    private void Awake()
     {
         value = setValue;
     }

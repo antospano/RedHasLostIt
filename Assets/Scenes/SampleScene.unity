@@ -333,14 +333,14 @@ MonoBehaviour:
     minY: 1
     maxY: 3
   entities:
-  - entity: {fileID: 6246457162875835208, guid: 804b55179aeae412493ea7d79d520a11, type: 3}
-    spawnY: 0
+  - entity: {fileID: 7697153267111409353, guid: 7b02712ff24d84314af4090bea50b149, type: 3}
+    spawnY: 1
   structures:
   - structure: {fileID: 7590042473265430847, guid: acdbf686de80442da9749689d842d9d8, type: 3}
-    spawnY: 0
+    spawnY: 0.5
   itemSpawnRange: 10
   structureSpawnRange: 80
-  entitySpawnRange: 20
+  entitySpawnRange: 15
   perlinPos: 30
   perlinZoomMultiplier: 2
   xOffsetMinMax: {x: 1000, y: 5000}
@@ -737,13 +737,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1271035105}
   m_HandleRect: {fileID: 775592488}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: -40
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1372549220}
+        m_TargetAssemblyTypeName: SoundMixerManager, Assembly-CSharp
+        m_MethodName: SetMasterVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -40
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &325134123
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,6 +938,7 @@ MonoBehaviour:
   player: {fileID: 325134134}
   maxHealth: 20
   healthValueDisplay: {fileID: 1683420178}
+  deathSoundClip: {fileID: 8300000, guid: 76f4ea7ac50a9ef7396d49a6532a7acb, type: 3}
 --- !u!114 &325134133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -954,6 +967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 325134123}
   weapon: {fileID: 1720997303}
+  audioClip: {fileID: 8300000, guid: 29ecff5dc96d7cf9eab7ac072cae65ae, type: 3}
   health: {fileID: 325134133}
 --- !u!95 &325134135
 Animator:
@@ -2135,7 +2149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: SampleScene
-  audioClip: {fileID: 0}
 --- !u!114 &891401970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2835,6 +2848,51 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 325134125}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1372549219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1372549221}
+  - component: {fileID: 1372549220}
+  m_Layer: 0
+  m_Name: SoundMixerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1372549220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372549219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adbe4218ff69cb0e58d4a57ff993c0d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: b50ab724176f6b88e9299564f66ab053, type: 2}
+--- !u!4 &1372549221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372549219}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4832227, y: 1.1708117, z: -4.6606183}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1414811169
 GameObject:
@@ -4204,6 +4262,7 @@ MonoBehaviour:
   displayCurrentAmmo: {fileID: 1720997306}
   maxAmmo: 20
   shootDelay: 0.2
+  soundClip: {fileID: 8300000, guid: 44226f1c0df742061bf60134b2d9d4e1, type: 3}
 --- !u!212 &1720997304
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5224,3 +5283,4 @@ SceneRoots:
   - {fileID: 195087615}
   - {fileID: 333609737}
   - {fileID: 1826857446}
+  - {fileID: 1372549221}

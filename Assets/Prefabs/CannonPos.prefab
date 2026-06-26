@@ -183,6 +183,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 8820958308839795917}
   particle: {fileID: 1465810299354517505, guid: 6f580abd67d2d4f02b95aa37000f772a, type: 3}
+  piggyDeathSoundClip: {fileID: 8300000, guid: 1b717a96991be7b5ba2d497962c73a61, type: 3}
+  boxDeathSoundClip: {fileID: 8300000, guid: 52eef217dd35aa1cbad52d6b5e22dc49, type: 3}
 --- !u!114 &8820958308839795917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +218,7 @@ MonoBehaviour:
   shootForce: 35
   shootDelay: 3
   shootingRadius: 8
+  soundClip: {fileID: 8300000, guid: 44226f1c0df742061bf60134b2d9d4e1, type: 3}
 --- !u!61 &8820958309769054175
 BoxCollider2D:
   m_ObjectHideFlags: 0

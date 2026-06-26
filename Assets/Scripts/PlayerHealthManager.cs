@@ -7,6 +7,7 @@ public class PlayerHealthManager : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private int maxHealth = 1;
     [SerializeField] private DisplayValue healthValueDisplay;
+    [SerializeField] private AudioClip deathSoundClip;
 
     private void Update()
     {
@@ -17,6 +18,7 @@ public class PlayerHealthManager : MonoBehaviour
         if (player.health.value <= 0)
         {
             player.health.SetHealth(0);
+            SoundFXManager.instance.PlaySoundFX(deathSoundClip, transform, 1f);
             Destroy(player.GetPlayer());
             GameStateManager.instance.ChangeGameState(GameState.Over);
         }

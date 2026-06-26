@@ -176,6 +176,7 @@ MonoBehaviour:
   shootForce: 40
   shootDelay: 1.5
   shootingRadius: 8
+  soundClip: {fileID: 8300000, guid: 44226f1c0df742061bf60134b2d9d4e1, type: 3}
 --- !u!1 &7697153266475681300
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,6 +367,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 7697153267111409352}
   particle: {fileID: 1465810299354517505, guid: d477c543f506f2b8288103734ea1a475, type: 3}
+  piggyDeathSoundClip: {fileID: 8300000, guid: 1b717a96991be7b5ba2d497962c73a61, type: 3}
+  boxDeathSoundClip: {fileID: 8300000, guid: 52eef217dd35aa1cbad52d6b5e22dc49, type: 3}
 --- !u!114 &7697153267111409352
 MonoBehaviour:
   m_ObjectHideFlags: 0

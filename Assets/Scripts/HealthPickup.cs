@@ -6,6 +6,7 @@ public class HealthPickup : Pickup
 {
     [SerializeField] private int randMin;
     [SerializeField] private int randMax;
+    [SerializeField] private AudioClip audioClip;
     private Health health;
 
     private void Start()
@@ -15,7 +16,7 @@ public class HealthPickup : Pickup
 
     public override void PickupBehavior()
     {
-
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,7 +28,9 @@ public class HealthPickup : Pickup
             {
                 health.SetHealth(health.value + base.value);
                 base.pickedUp = true;
+                SoundFXManager.instance.PlaySoundFX(audioClip, transform, 1.0f);
             }
+            
         }
     }
 }

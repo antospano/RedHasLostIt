@@ -22,7 +22,8 @@ public class EnemyWeaponEvents : MonoBehaviour
             {
                 shot = Instantiate<GameObject>(shotTexture, weapon.GetShootPos().position, Quaternion.identity);
                 //Debug.Log("coc");
-                StartCoroutine(DestroyShot(shot));
+                //StartCoroutine(DestroyShot(shot));
+                Destroy(shot, 0.1f);
             }
         });
     }

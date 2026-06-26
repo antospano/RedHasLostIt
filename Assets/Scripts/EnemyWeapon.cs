@@ -11,6 +11,7 @@ public class EnemyWeapon : MonoBehaviour
     [SerializeField] private float shootForce;
     [SerializeField] private float shootDelay;
     [SerializeField] private float shootingRadius;
+    [SerializeField] private AudioClip soundClip;
     public bool isShooting { get; private set; } = false;
     private Transform target;
     private Bullet bulletPrefab;
@@ -64,6 +65,7 @@ public class EnemyWeapon : MonoBehaviour
 
     private IEnumerator WeaponShoot() //TO DO: FIX
     {
+        SoundFXManager.instance.PlaySoundFX(soundClip, transform, 1.0f);
         yield return new WaitForSecondsRealtime(shootDelay);
         if (GameStateManager.instance.isPaused)
         {

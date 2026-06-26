@@ -20,9 +20,9 @@ public class WeaponEvents : MonoBehaviour
         OnAmmoEnded += fade.Init;
         OnShoot += (() =>
         {
-            once = false;
-            shot = Instantiate<GameObject>(shotTexture, weapon.GetShootPos().position, Quaternion.identity);
-            StartCoroutine(DestroyShot(shot));
+            //once = false;
+            shot = Instantiate(shotTexture, weapon.GetShootPos().position, Quaternion.identity);
+            Destroy(shot, 0.1f);
         });
     }
 
@@ -37,9 +37,9 @@ public class WeaponEvents : MonoBehaviour
             shot.transform.position = weapon.GetShootPos().transform.position;
         }
 
-        if (weapon.hasShot && once)
+        if (weapon.hasShot /*&& once*/)
         {
-            OnShoot.Invoke(); //PORCODIO
+            OnShoot.Invoke();
         }
 
         if (weapon.hasTriggered && weapon.currentAmmo == 0)
@@ -52,10 +52,11 @@ public class WeaponEvents : MonoBehaviour
         }
     }
 
+    /*
     IEnumerator DestroyShot(GameObject shot)
     {
         yield return new WaitForSecondsRealtime(.1f);
         Destroy(shot);
         once = true;
-    }
+    } */
 }

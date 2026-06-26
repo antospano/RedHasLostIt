@@ -95,7 +95,6 @@ public class TerrainGeneration : MonoBehaviour
             if (Random.Range(0, itemSpawnRange) == itemSpawnValue)
             {
                 int index = Random.Range(0, items.Length);
-                Debug.Log(index);
                 SpawnPickup.Spawn(items[index].item, new Vector2(grassX, grassY + Random.Range(items[index].minY, items[index].maxY)));
             }
 

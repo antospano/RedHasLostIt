@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private DisplayValue displayCurrentAmmo;
     [SerializeField] private int maxAmmo;
     [SerializeField] private float shootDelay;
+    [SerializeField] private AudioClip soundClip;
     public int currentAmmo { get; private set; }
     public bool hasShot { get; private set; } = false;
     public bool canShoot { get; private set; } = true;
@@ -53,6 +54,7 @@ public class Weapon : MonoBehaviour
 
     private void WeaponShoot()
     {
+        SoundFXManager.instance.PlaySoundFX(soundClip, transform, 1.0f);
         bulletPrefab = Instantiate<Bullet>(bullet, new Vector3(shootPos.position.x, shootPos.position.y, 0), Quaternion.identity);
         bulletPrefab.Shoot(transform.right, shootForce);
         currentAmmo--;
