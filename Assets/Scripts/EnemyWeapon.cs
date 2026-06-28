@@ -20,40 +20,38 @@ public class EnemyWeapon : MonoBehaviour
     private float targetDist;
     private bool hasShot = false; //CHECk
     private IEnumerator shootCoroutine;
+    private int obstacleLayer;
 
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        obstacleLayer = LayerMask.GetMask("Ground");
     }
 
     private void Update()
     {
-        if (!target)
-        {
-            return;
-        }
+        if (!target) return;
 
-        targetDist = Mathf.Abs(Vector3.Distance(transform.position, target.position));
+        targetDist = Vector3.Distance(transform.position, target.position);
 
-        if (targetDist < Mathf.Pow(shootingRadius, 2))
+        if (targetDist < shootingRadius)
         {
             RotateWeapon();
-        }
 
-        if (!hasShot && targetDist < shootingRadius)
-        {
-            hasShot = true;
-            //pauseOnce = true;
-            shootCoroutine = WeaponShoot();
-            StartCoroutine(shootCoroutine);
-            StartCoroutine(ResetShoot());
-            
+            // CONTROLLO: Se c'è del legno davanti, non sparare
+            if (IsWoodInFront())
+            {
+                return; // Interrompe l'Update, impedendo lo sparo
+            }
+
+            if (!hasShot)
+            {
+                hasShot = true;
+                shootCoroutine = WeaponShoot();
+                StartCoroutine(shootCoroutine);
+                StartCoroutine(ResetShoot());
+            }
         }
-        else
-        {
-            StartCoroutine(ResetShoot());
-        }
-        //Debug.Log("yes");
     }
 
     private void RotateWeapon()
@@ -93,5 +91,21 @@ public class EnemyWeapon : MonoBehaviour
     public Transform GetShootPos()
     {
         return shootPos;
+    }
+
+    private bool IsWoodInFront()
+    {
+        Vector2 dir = (target.position - shootPos.position).normalized;
+
+        RaycastHit2D hit = Physics2D.Raycast(shootPos.position, dir, shootingRadius, obstacleLayer);
+
+        if (hit.collider != null)
+        {
+            return true; 
+        }
+        else
+        {
+            return false;
+        }
     }
 }
