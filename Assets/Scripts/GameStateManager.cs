@@ -10,6 +10,7 @@ public class GameStateManager
     public GameState currentState { get; private set; } = GameState.Play;
     public bool isPaused { get; private set; } = false;
     public bool isOver { get; private set; } = false;
+    public bool hasWon { get; private set; } = false;
     public event StateChanger OnStateChange;
     //private GameObject pauseUI;
 
@@ -27,6 +28,11 @@ public class GameStateManager
             case GameState.Over:
                 isPaused = true;
                 isOver = true;
+                break;
+            case GameState.Win:
+                isPaused = true;
+                isOver = true;
+                hasWon = true;
                 break;
         }
         currentState = newState;

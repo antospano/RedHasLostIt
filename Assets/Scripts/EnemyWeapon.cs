@@ -22,6 +22,7 @@ public class EnemyWeapon : MonoBehaviour
     private IEnumerator shootCoroutine;
     private int obstacleLayer;
 
+
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -34,7 +35,7 @@ public class EnemyWeapon : MonoBehaviour
 
         targetDist = Vector3.Distance(transform.position, target.position);
 
-        if (targetDist < shootingRadius)
+        if (targetDist < shootingRadius * 2)
         {
             RotateWeapon();
 
@@ -43,16 +44,21 @@ public class EnemyWeapon : MonoBehaviour
             {
                 return; // Interrompe l'Update, impedendo lo sparo
             }
-
-            if (!hasShot)
+            else
             {
-                hasShot = true;
-                shootCoroutine = WeaponShoot();
-                StartCoroutine(shootCoroutine);
-                StartCoroutine(ResetShoot());
+                if (!hasShot)
+                {
+                    hasShot = true;
+                    shootCoroutine = WeaponShoot();
+                    StartCoroutine(shootCoroutine);
+                    StartCoroutine(ResetShoot());
+                }
+                else
+                {
+                    StartCoroutine(ResetShoot());
+                }
             }
         }
-        StartCoroutine(ResetShoot());
     }
 
     private void RotateWeapon()

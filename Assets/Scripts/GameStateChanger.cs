@@ -6,6 +6,7 @@ public class GameStateChanger : MonoBehaviour
 {
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject winUI;
     GameStateManager inst = GameStateManager.instance;
     private void Start()
     {
@@ -23,6 +24,11 @@ public class GameStateChanger : MonoBehaviour
         {
             inst.Invoke(GameState.Over);
             gameOverUI.SetActive(true);
+        }
+        if (inst.currentState == GameState.Win)
+        {
+            inst.Invoke(GameState.Win);
+            winUI.SetActive(true);
         }
     }
 }

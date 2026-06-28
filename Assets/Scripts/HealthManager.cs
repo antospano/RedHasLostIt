@@ -22,6 +22,7 @@ public class HealthManager : MonoBehaviour
             {
                 SoundFXManager.instance.PlaySoundFX(piggyDeathSoundClip, transform, 1.0f);
                 Instantiate(coinPickup, new Vector2(transform.position.x, transform.position.y + 1.0f), Quaternion.identity);
+                EnemyManager.instance.removeEnemy(1);
             }
             else if (gameObject.tag == "Box")
             {

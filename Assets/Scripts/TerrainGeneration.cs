@@ -102,15 +102,18 @@ public class TerrainGeneration : MonoBehaviour
             {
                 int index = Random.Range(0, structures.Length - 1);
                 Instantiate<GameObject>(structures[index].structure, new Vector3(grassX, grassY + structures[index].spawnY), Quaternion.identity);
+                EnemyManager.instance.addEnemy(4);
             }
 
             if (Random.Range(0, entitySpawnRange) == entitySpawnValue)
             {
                 int index = Random.Range(0, entities.Length - 1);
                 SpawnPickup.Spawn(entities[index].entity, new Vector2(grassX, grassY + entities[index].spawnY));
+                EnemyManager.instance.addEnemy(1);
             }
             perlinDone = false;
         }
+        EnemyManager.instance.isLevelGenerated = true;
     }
 
     private void SetPlayerY(float y)
