@@ -8,17 +8,19 @@ public class Bullet : MonoBehaviour
     [SerializeField] private string bulletTag;
     [SerializeField] private float bulletScale;
     [SerializeField] private AudioClip piggyDamageClip;
+    [SerializeField] private string boxTag;
     private Health objHealth;
     private string safeTag;
     private string checkTag;
     private Rigidbody2D rb;
+    private bool enemyShooting = false;
 
     private void Start()
     {
         transform.localScale *= bulletScale;
     }
 
-    public void Shoot(Vector2 dir, float force)
+    public void Shoot(bool isEnemyShooting, Vector2 dir, float force)
     {
         rb = Check.ComponentExists<Rigidbody2D>(gameObject);
         rb.AddForce(dir * force, ForceMode2D.Impulse);

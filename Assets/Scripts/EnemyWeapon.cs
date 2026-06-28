@@ -32,6 +32,7 @@ public class EnemyWeapon : MonoBehaviour
         {
             return;
         }
+
         targetDist = Mathf.Abs(Vector3.Distance(transform.position, target.position));
 
         if (targetDist < Mathf.Pow(shootingRadius, 2))
@@ -78,7 +79,8 @@ public class EnemyWeapon : MonoBehaviour
         bulletPrefab = Instantiate<Bullet>(bullet, shootPos.position, Quaternion.identity);
         bulletPrefab.SetSafeTag("EnemyWeapon");
         bulletPrefab.SetScale(bulletScale);
-        bulletPrefab.Shoot(weaponDir.normalized, shootForce);
+
+        bulletPrefab.Shoot(true, weaponDir.normalized, shootForce);
         hasShot = false;
     }
 

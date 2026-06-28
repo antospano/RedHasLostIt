@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6123746972304427924}
   m_Layer: 3
   m_Name: wood_box
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,5 +164,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 1497235574464811995}
   particle: {fileID: 1465810299354517505, guid: 4b6a2e93126144178984ab905bebb4fd, type: 3}
+  coinPickup: {fileID: 0}
   piggyDeathSoundClip: {fileID: 8300000, guid: 1b717a96991be7b5ba2d497962c73a61, type: 3}
   boxDeathSoundClip: {fileID: 8300000, guid: 52eef217dd35aa1cbad52d6b5e22dc49, type: 3}

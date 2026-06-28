@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7565086580006990688}
   - component: {fileID: 6985969474573680751}
+  - component: {fileID: -6702872177675562486}
   m_Layer: 0
   m_Name: CannonPos
   m_TagString: Untagged
@@ -77,6 +78,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!50 &-6702872177675562486
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6985969474573680750}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8820958308839795922
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 8820958308839795917}
   particle: {fileID: 1465810299354517505, guid: 6f580abd67d2d4f02b95aa37000f772a, type: 3}
+  coinPickup: {fileID: 0}
   piggyDeathSoundClip: {fileID: 8300000, guid: 1b717a96991be7b5ba2d497962c73a61, type: 3}
   boxDeathSoundClip: {fileID: 8300000, guid: 52eef217dd35aa1cbad52d6b5e22dc49, type: 3}
 --- !u!114 &8820958308839795917

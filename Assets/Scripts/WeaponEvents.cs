@@ -13,7 +13,6 @@ public class WeaponEvents : MonoBehaviour
     private GameObject shot;
     private event WeaponDelegate OnAmmoEnded;
     private event WeaponDelegate OnShoot;
-    private bool once = true;
 
     private void Start()
     {

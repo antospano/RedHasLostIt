@@ -56,7 +56,7 @@ public class Weapon : MonoBehaviour
     {
         SoundFXManager.instance.PlaySoundFX(soundClip, transform, 1.0f);
         bulletPrefab = Instantiate<Bullet>(bullet, new Vector3(shootPos.position.x, shootPos.position.y, 0), Quaternion.identity);
-        bulletPrefab.Shoot(transform.right, shootForce);
+        bulletPrefab.Shoot(false, transform.right, shootForce);
         currentAmmo--;
     }
 

@@ -106,6 +106,7 @@ MonoBehaviour:
   bulletTag: Bullet
   bulletScale: 1
   piggyDamageClip: {fileID: 8300000, guid: cdbf8e741c874b9e69ce688dce9f9c5d, type: 3}
+  boxTag: Box
 --- !u!50 &-3491138246746705710
 Rigidbody2D:
   serializedVersion: 5
