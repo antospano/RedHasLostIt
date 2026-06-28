@@ -52,6 +52,7 @@ public class EnemyWeapon : MonoBehaviour
                 StartCoroutine(ResetShoot());
             }
         }
+        StartCoroutine(ResetShoot());
     }
 
     private void RotateWeapon()
