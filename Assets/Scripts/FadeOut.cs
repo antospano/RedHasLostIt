@@ -15,6 +15,7 @@ public class FadeOut : MonoBehaviour
     private void Start()
     {
         text = Check.ComponentExists<CanvasGroup>(gameObject);
+        text.alpha = 0;
     }
 
     public void Init()
@@ -37,7 +38,7 @@ public class FadeOut : MonoBehaviour
         {
             alpha -= 0.003f;
             text.alpha = alpha;
-            yield return new WaitForSecondsRealtime(fadeVelocity);
+            yield return new WaitForSecondsRealtime(fadeVelocity / 10f);
         }
         alpha = 0;
         text.alpha = alpha;

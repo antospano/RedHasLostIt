@@ -20,7 +20,7 @@ public class HealthManager : MonoBehaviour
 
         if (health.value <= 0 && !deathByMelee)
         {
-            if (gameObject.tag == "Piggy")
+            if (gameObject.tag == "Enemy")
             {
                 SoundFXManager.instance.PlaySoundFX(piggyDeathSoundClip, transform, 1.0f);
                 Instantiate(coinPickup, new Vector2(transform.position.x, transform.position.y + 1.0f), Quaternion.identity);
@@ -50,14 +50,13 @@ public class HealthManager : MonoBehaviour
     public IEnumerator MeleeKillCoroutine()
     {
         health.gameObject.name = "Dead";
-        health.SetHealth(0);
+        //health.SetHealth(0);
         SoundFXManager.instance.PlaySoundFX(piggyDeathSoundClip, transform, 1.0f);
         Instantiate(coinPickup, new Vector2(transform.position.x, transform.position.y + 1.0f), Quaternion.identity);
         EnemyManager.instance.removeEnemy(1);
 
         yield return new WaitForSecondsRealtime(1.0f);
-
-        Destroy(gameObject);
         deathByMelee = false;
+        Destroy(gameObject);
     }
 }
