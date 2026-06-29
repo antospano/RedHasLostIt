@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 5128302602056294281}
   m_Layer: 3
   m_Name: Piggy
-  m_TagString: Piggy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

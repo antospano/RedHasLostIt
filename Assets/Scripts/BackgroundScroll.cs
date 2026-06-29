@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BackgroundScroll : MonoBehaviour
 {
-    [Range(0.0f, .001f)]
+    [Range(0.0f, .01f)]
     [SerializeField] private float scrollSpeed;
     [SerializeField] private CharacterController cc;
     [SerializeField] private float backgroundHeight;
@@ -18,6 +18,10 @@ public class BackgroundScroll : MonoBehaviour
 
     private void Update()
     {
+        if (cc.speed == 0)
+        {
+            return;
+        }
         transform.position = new Vector3(Camera.main.transform.position.x, backgroundHeight, 10);
     }
 
@@ -32,7 +36,7 @@ public class BackgroundScroll : MonoBehaviour
         {
             return;
         }
-        offset += scrollSpeed * cc.characterRb.linearVelocity.x;
+        offset += cc.characterRb.linearVelocity.x * scrollSpeed * Time.fixedDeltaTime;
         material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
     }
 }

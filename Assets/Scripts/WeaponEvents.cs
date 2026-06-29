@@ -8,7 +8,8 @@ public class WeaponEvents : MonoBehaviour
 {
     //various variables used for the events
     [SerializeField] private Weapon weapon;
-    [SerializeField] private FadeOut fade;
+    [SerializeField] private FadeOut textFade;
+    [SerializeField] private FadeOut imageFade;
     [SerializeField] private GameObject shotTexture;
     private GameObject shot;
     private event WeaponDelegate OnAmmoEnded;
@@ -16,7 +17,9 @@ public class WeaponEvents : MonoBehaviour
 
     private void Start()
     {
-        OnAmmoEnded += fade.Init;
+        OnAmmoEnded += textFade.Init;
+        OnAmmoEnded += imageFade.Init;
+
         OnShoot += (() =>
         {
             //once = false;
@@ -43,9 +46,10 @@ public class WeaponEvents : MonoBehaviour
 
         if (weapon.hasTriggered && weapon.currentAmmo == 0)
         {
-            if (fade.isFading)
+            if (textFade.isFading)
             {
-                StopCoroutine(fade.fadeCoroutine);
+                StopCoroutine(textFade.fadeCoroutine);
+                StopCoroutine(imageFade.fadeCoroutine);
             }
             OnAmmoEnded.Invoke();
         }
