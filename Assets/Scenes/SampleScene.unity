@@ -4680,12 +4680,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c72ad60d39d2f9b739c1f7dd7a8c9a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeRadius: 2
+  meleeRadius: 1
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 8
   meleeCanvasObject: {fileID: 594469635}
   meleeSound: {fileID: 8300000, guid: 1b717a96991be7b5ba2d497962c73a61, type: 3}
+  meleeTexture: {fileID: 2750293845781376429, guid: f33f3b2e64a46f5ab8763fcbc6a86c7b, type: 3}
 --- !u!1 &327280136
 GameObject:
   m_ObjectHideFlags: 0
