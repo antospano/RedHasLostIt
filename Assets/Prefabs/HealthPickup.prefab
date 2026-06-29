@@ -114,8 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23488f87aa1f4adcb1a3a8edf9fe635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randMin: 1
-  randMax: 20
+  randMin: 10
+  randMax: 10
   audioClip: {fileID: 8300000, guid: f98ad9a9aa43a3903a9072d28acd000d, type: 3}
 --- !u!58 &6557293762289201322
 CircleCollider2D:

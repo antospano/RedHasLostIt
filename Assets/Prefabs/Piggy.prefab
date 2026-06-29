@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7697153265812786116}
   - component: {fileID: 7697153265812786114}
   - component: {fileID: 7697153265812786115}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Weapon
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7697153266475681299}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7697153267069852489}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WeaponPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 7697153267111409361}
   - component: {fileID: -3572525927288107113}
   - component: {fileID: 5128302602056294281}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Piggy
   m_TagString: Piggy
   m_Icon: {fileID: 0}

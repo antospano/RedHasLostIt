@@ -13,7 +13,6 @@ public class Bullet : MonoBehaviour
     private string safeTag;
     private string checkTag;
     private Rigidbody2D rb;
-    private bool enemyShooting = false;
 
     private void Start()
     {
