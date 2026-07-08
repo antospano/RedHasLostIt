@@ -1,2 +1,2 @@
-# AngryBirdsShooter
-Angry birds game but shooter
+# Red Has Lost It
+Repository for the game "Red Has Lost It"
